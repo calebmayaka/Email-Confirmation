@@ -36,9 +36,10 @@ def signin(request):
         user = authenticate(username = username, password = password)
         if user is not None:
             login(request, user)
+            return render(request, "Main/home.html")
         else: 
             messages.error(request, 'Wrong Username or password')
-            return render(request,'Main/home.html')
+            return redirect('signup.html')
     
     return render(request, 'Main/signin.html')
 
